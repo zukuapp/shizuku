@@ -1,91 +1,66 @@
-﻿# Shizuku Platform
+# shizuku
 
-> **Brand**: Shizuku | **Abbreviation**: **zuku (즈쿠)** | **Domain**: [zuzunza.com](https://zuzunza.com)
-> **GitHub Organization**: [github.com/zukuapp](https://github.com/zukuapp)
+ZUKU(즈쿠) 플랫폼의 **공개 홈·문서 인덱스** 저장소입니다.  
+브랜드명 Shizuku · 약칭 **zuku (즈쿠)** · 도메인 [zuzunza.com](https://zuzunza.com).
 
-Shizuku is a modern interactive UGC media platform inspired by the JujeonJi.com (주전자닷컴) spirit. Built with an open-source stack centered around Next.js (SSR), WebAssembly (WASM) runtime, Rust/C++ backend services, PostgreSQL, and Redis.
+> GitHub 조직: [zukuapp](https://github.com/zukuapp) · 설계도 SSOT: [`zuku-docs`](https://github.com/zukuapp/zuku-docs)
 
-## Media Types
+## 미디어 · 제품
 
-| Type   | Format         | Description                                    |
-|--------|---------------|------------------------------------------------|
-| Hype   | MP4 / Image    | Interactive long-form horizontal media          |
-| Swipe  | MP4 (Vertical) | Short-form vertical video feed                 |
-| Jump   | WASM/HTML5     | Browser-based interactive games & experiences  |
+| | 포맷 | 설명 |
+|---|------|------|
+| **Thread** | SNS/포럼 | `www` 홈 · 미디어는 ≤30초 미리보기 + 딥링크 |
+| **Hype** | 롱폼 · 가로 영상 · 사진 | 창작 커뮤니티 |
+| **Swipe** | 세로 숏폼 | 스튜디오 없음 · Swipe→Hype 배급 금지 |
+| **Jump** | WASM/HTML5 | 게임 허브 + Jump Studio |
+| **Aist** | 생성 전용 | → Jump Studio draft |
 
-## Architecture
+## 스택
+
+Next.js · WebAssembly · Rust · PostgreSQL · Redis · nginx · Cloudflare
+
+## 아키텍처 (요약)
 
 ```
 Client (Browser / Mobile)
-    |
-Cloudflare (WAF + DDoS + SSL + CDN)
-    |
-nginx (TLS Termination + Static + Routing)
-    |
-+-----------+------------------+-----------------+
-|           |                  |                 |
-Next.js SSR  Rust/C++ Backend  WASM Runtime     |
-(Web/API)    (Transcode/Core)   (Sandboxed)     |
-    |           |                  |              |
-PostgreSQL    Redis    Cloudflare R2 (Storage)   |
+    │
+Cloudflare (WAF · CDN)
+    │
+nginx
+    │
+Next.js SSR  ·  Rust 백엔드  ·  WASM 런타임(샌드박스 경계)
+    │
+PostgreSQL · Redis · R2
 ```
 
-All Jump game content runs inside an **unprivileged WASM sandbox** with syscall filtering and resource limits (CPU, memory, PID, FD).
+인터랙티브 콘텐츠는 **unprivileged 샌드박스 경계**와 계약된 리소스 한도 안에서 실행됩니다.  
+핵심 내부 구현은 공개하지 않습니다.
 
-## Documentation
+## 문서
 
-This repository contains the public design documentation for the Shizuku Platform.
+| 경로 | 내용 |
+|------|------|
+| `docs/` | 공개용 설계·가이드 인덱스 |
+| [`zuku-docs`](https://github.com/zukuapp/zuku-docs) | 전체 설계도 (SSOT) |
 
-| Category | Description |
-|----------|-------------|
-| [00-overview](docs/00-overview.md) | Master overview and platform vision |
-| [01-architecture](docs/01-architecture.md) | System architecture and component design |
-| [02-project-management](docs/02-project-management.md) | Project process and methodology |
-| [05-database](docs/05-database.md) | Database schema and data modeling |
-| [06-api](docs/06-api.md) | API design and specification |
-| [07-frontend-design](docs/07-frontend-design.md) | UI/UX design system and brand guide |
-| [08-deployment](docs/08-deployment.md) | Deployment and infrastructure |
+## 공개 Jump 도구
 
-## Technology Stack
+| 저장소 | 역할 |
+|--------|------|
+| [zuku-engine-next2d](https://github.com/zukuapp/zuku-engine-next2d) | Jump 엔진·매니페스트 |
+| [zuku-cli](https://github.com/zukuapp/zuku-cli) | 검증·패키징 CLI |
+| [zuku-api](https://github.com/zukuapp/zuku-api) | OpenAPI 계약 |
 
-| Layer     | Technology                              |
-|-----------|----------------------------------------|
-| Runtime   | WebAssembly (unprivileged sandbox)      |
-| Backend   | Rust / C++ (Mediapipe)                  |
-| Web/SSR   | Next.js (React)                         |
-| Database  | PostgreSQL + Redis                      |
-| Edge/CDN  | Cloudflare (WAF, DDoS, TLS, CDN) + R2   |
-| Reverse Proxy | nginx                               |
+## 네이밍
 
-## Sandbox Philosophy
+| 표기 | 용도 |
+|------|------|
+| Shizuku | 브랜드·엔진 코드명 |
+| **zuku / 즈쿠** | 공식 약칭 |
+| Tresillo | 회사 |
 
-All executable content (WASM/containers) runs inside an **unprivileged sandbox boundary**. The sandbox enforces:
-- **Resource limits**: CPU, memory, PID, FD caps
-- **Syscall filtering**: Only allowed syscalls are permitted
-- **Memory accounting**: Per-runtime memory tracking
-
-The internal syscall filter rules and memory counting logic are **proprietary (SEL/Private)** and not disclosed in public documentation. Only the boundary, resource limits, and interface contracts are published.
-
-## Licensing
-
-Shizuku Platform uses a **Dual Licensing Model**:
-- **Shizuku Open License (SOL)** — Apache 2.0 + attribution requirements for open-source use
-- **Shizuku Enterprise License (SEL)** — Commercial license for enterprise features
-
-See [LICENSE.md](LICENSE.md) for details.
-
-## Related Repositories
-
-| Repository | Description |
-|-----------|-------------|
-| [zuku-api](https://github.com/zukuapp/zuku-api) | OpenAPI spec & SDK package |
-| [zuku-engine-next2d](https://github.com/zukuapp/zuku-engine-next2d) | Jump game engine |
-| [zuku-cli](https://github.com/zukuapp/zuku-cli) | CLI tools |
-
-## Brand Assets
-
-Logo files are available in the [assets/](assets/) directory.
+> “시즈쿠” 표기는 사용하지 않습니다.
 
 ---
 
-*Shizuku Platform — Building the next generation of interactive UGC media.*
+**ZUKU (즈쿠)** · Tresillo · [zuzunza.com](https://zuzunza.com)
