@@ -1,34 +1,28 @@
-﻿# Project Management
+# 공개 저장소의 작업 방식
 
-## Development Process
+이 문서는 공개 계약을 수정할 때의 절차입니다. 이전 문서의 주차별 개발·출시
+일정은 현재 진행 상황을 증명하지 못해 제거했습니다.
 
-### Phase 1: Foundation (Weeks 1-4)
-- Development environment setup (Docker, CI/CD)
-- Rust/C++ backend + WASM sandbox scaffolding
-- PostgreSQL schema, Next.js project initialization
+## 변경을 시작할 저장소
 
-### Phase 2: Core Media (Weeks 5-8)
-- Hype/Swipe/Jump content creation flows
-- WASM sandbox validation
-- Media transcode pipeline
+| 바꾸려는 내용                        | 원본 저장소                                                           |
+| ------------------------------------ | --------------------------------------------------------------------- |
+| ZWF2 파일 구조와 HTML5 플레이어 경계 | [`zwf`](https://github.com/zukuapp/zwf)                               |
+| Jump 매니페스트와 런타임 어댑터      | [`zuku-engine-next2d`](https://github.com/zukuapp/zuku-engine-next2d) |
+| API 경로와 데이터 모델               | [`zuku-api`](https://github.com/zukuapp/zuku-api)                     |
+| ZUKBOX ZWF1 바이너리                 | [`zukbox-runtime`](https://github.com/zukuapp/zukbox-runtime)         |
+| 조직 차원의 길잡이                   | [`.github`](https://github.com/zukuapp/.github)                       |
 
-### Phase 3: User Platform (Weeks 9-12)
-- OAuth 2.0 (Google/Kakao/Naver)
-- Social features (follow, like, comment)
-- Mobile-responsive UI
+각 저장소의 명세가 필드와 형식의 기준입니다. 원본을 갱신한 뒤 이 저장소의 개요,
+예제, 연결 링크를 맞춥니다. 구체적인 변경 방법과 검증 결과는 해당 저장소의 Issue
+또는 PR에 남기세요.
 
-### Phase 4: Monetization (Weeks 13-16)
-- Ad/partnership/coupon/advertisement systems
-- Payment integration
+## 문서 검토 기준
 
-### Phase 5: Launch (Weeks 17-20)
-- Security audit, performance optimization
-- Beta launch on zuzunza.com
+- 지금 공개된 코드·명세로 확인할 수 있는 사실인지 확인합니다.
+- 구현, 초안, 계획을 구분해 표시합니다.
+- 복사해서 실행할 명령은 실제 동작과 배포 여부를 확인합니다.
+- 비공개 배포 구성과 서비스 운영 수치를 추정해서 적지 않습니다.
+- 기존 문서 URL을 바꿔야 한다면 새 위치로 가는 링크를 남깁니다.
 
-## Repository Structure
-
-- `shizuku` — Documentation and brand assets
-- `zuku-api` — OpenAPI spec and SDK
-- `zuku-engine-next2d` — Jump game engine
-- `zuku-cli` — CLI tools
-- `zuku-platform` — Main platform (private)
+기여 방법은 [이 저장소의 안내](../CONTRIBUTING.md)를 참고하세요.

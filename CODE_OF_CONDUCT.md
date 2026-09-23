@@ -52,16 +52,16 @@ an individual is officially representing the community in public spaces.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-conduct@zuzunza.com.
+[conduct@zuzunza.com](mailto:conduct@zuzunza.com).
 All complaints will be reviewed and investigated promptly and fairly.
 
 ## Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant][homepage],
 version 2.0, available at
-https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
+[Contributor Covenant 2.0](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
 
 [homepage]: https://www.contributor-covenant.org
 
 For answers to common questions about this code of conduct, see the FAQ at
-https://www.contributor-covenant.org/faq.
+[Contributor Covenant FAQ](https://www.contributor-covenant.org/faq).

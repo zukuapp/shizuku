@@ -1,72 +1,34 @@
-﻿# Shizuku Platform — Master Overview
+# ZUKU 공개 플랫폼 개요
 
-> **Brand**: Shizuku | **Abbreviation**: **zuku (즈쿠)** | **Domain**: zuzunza.com
-> **GitHub Organization**: [github.com/zukuapp](https://github.com/zukuapp)
+ZUKU(즈쿠)는 Trecillo가 만드는 창작·미디어 플랫폼입니다. 공개 웹사이트는
+[ZUKU 제품 지도](https://zukuapp.github.io/platform/)에서 Thread, Hype, Swipe,
+Jump 등의 화면을 소개합니다. 이 문서는 제품 소개와 개발 계약을 구분해
+안내합니다.
 
-## What is Shizuku (zuku)?
+## 개발자가 확인할 수 있는 것
 
-Shizuku (abbreviation: zuku, Korean: 즈쿠) is a modern interactive UGC media platform inspired by the JujeonJi.com (주전자닷컴) spirit. All interactive and game content runs inside an unprivileged sandbox using WebAssembly (WASM) containers, ensuring safety without sacrificing performance.
+| 영역             | 공개 자료                                                                                                                                                                 | 범위                                            |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| HTML5 게임       | [`zwf`](https://github.com/zukuapp/zwf)                                                                                                                                   | ZIP → ZWF2 컴파일러, 검사기, 플레이어 경계 명세 |
+| Jump 패키지      | [`zuku-engine-next2d`](https://github.com/zukuapp/zuku-engine-next2d)                                                                                                     | 매니페스트 스키마와 공개 런타임 어댑터          |
+| API 모델         | [`zuku-api`](https://github.com/zukuapp/zuku-api)                                                                                                                         | OpenAPI 3.1 문서와 SDK 소스                     |
+| ZUKBOX 저작·재생 | [`zukbox`](https://github.com/zukuapp/zukbox), [`zukbox-runtime`](https://github.com/zukuapp/zukbox-runtime), [`zukbox-player`](https://github.com/zukuapp/zukbox-player) | 에디터, ZWF1 바이너리 파서, 렌더러              |
 
-### Media Types
+ZWF2와 ZUKBOX ZWF1은 확장자 `.zwf`를 공유하지만 파일 구조가 다릅니다.
+[공개 아키텍처](01-architecture.md)에서 각 경로를 확인하세요.
 
-| Type  | Format     | Description                                   |
-|-------|-----------|-----------------------------------------------|
-| Hype  | MP4 + Image + WASM | Interactive long-form horizontal media  |
-| Swipe | MP4 (9:16) | Short-form vertical video feed               |
-| Jump  | WASM/HTML5  | Browser-based interactive games              |
+## 사용 가능한 경로와 명세의 차이
 
-## Technology Stack
+[`zwf` 입문](https://github.com/zukuapp/.github/blob/main/docs/getting-started.md)은
+로컬에서 직접 재현할 수 있는 패키징 절차입니다. 반면 OpenAPI 문서의 서버 주소와
+데이터 모델만으로 외부 계정·토큰 발급이나 운영 API 접근을 보장할 수 없습니다.
+`zuku-cli` 명령은 아직 실제 프로젝트 생성·검증·업로드를 수행하지 않는 초기
+구현입니다.
 
-| Layer         | Technology                           |
-|---------------|-------------------------------------|
-| Runtime       | WebAssembly (unprivileged sandbox)  |
-| Backend       | Rust / C++ (Mediapipe)              |
-| Web/SSR       | Next.js (React)                     |
-| Database      | PostgreSQL + Redis                  |
-| Edge/CDN      | Cloudflare (WAF, DDoS, TLS, CDN)    |
-| Storage       | Cloudflare R2                       |
+## 문서의 기준
 
-## Architecture
-
-```
-Client (Browser / Mobile)
-    |
-Cloudflare (WAF + DDoS + SSL + CDN)
-    |
-nginx (TLS Termination + Static + Routing)
-    |
-+-----------+------------------+-----------------+
-|           |                  |                 |
-Next.js SSR  Rust/C++ Backend  WASM Runtime     |
-(Web/API)    (Transcode/Core)   (Sandboxed)     |
-    |           |                  |              |
-PostgreSQL    Redis    Cloudflare R2 (Storage)   |
-```
-
-## Sandbox Philosophy
-
-All executable content runs inside an unprivileged sandbox boundary with:
-- Resource limits (CPU, memory, PID, FD)
-- Syscall filtering
-- Memory accounting
-
-Internal syscall filter rules and memory counting logic are proprietary and not publicly disclosed. Only boundary, limits, and interface contracts are published.
-
-## Documentation Index
-
-- `00-overview.md` — This file (master overview)
-- `01-architecture.md` — System architecture details
-- `02-project-management.md` — Development process
-- `05-database.md` — Database schema
-- `06-api.md` — API design
-- `07-frontend-design.md` — UI/UX and brand guide
-- `08-deployment.md` — Deployment architecture
-
-## License
-
-Shizuku Open License (SOL) — Based on Apache 2.0 with attribution requirements.
-See [LICENSE.md](../LICENSE.md) for details.
-
----
-
-*Shizuku Platform — Building the next generation of interactive UGC media.*
+공개 형식과 인터페이스는
+[조직 개발 문서](https://github.com/zukuapp/.github/blob/main/docs/README.md)에서
+찾고, 필드별 세부 사항은 연결된 저장소의 명세를 따릅니다. 이 저장소의
+[문서 목차](README.md)는 개요와 경계 설명을 모읍니다. 사용·수정 조건은
+[이 저장소의 라이선스](../LICENSE.md)를 확인하세요.

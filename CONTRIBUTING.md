@@ -1,49 +1,31 @@
-﻿# Contributing to Shizuku Platform
+# ZUKU 공개 문서에 기여하기
 
-Thank you for your interest in contributing to the Shizuku Platform!
+이 저장소는 ZUKU의 공개 개요와 문서 길잡이를 담습니다. API 필드나 게임 파일
+형식을 바꿀 때는 해당 계약 저장소의 명세를 먼저 수정하고, 이곳의 설명과 링크를
+함께 갱신해 주세요.
 
-## Getting Started
+## 변경 제안
 
-1. Read the [README](README.md) for an overview of the platform.
-2. Check the [documentation](docs/) for architecture and design details.
-3. Review open issues to find something to work on.
+1. [문서 목차](docs/README.md)와 관련된 원본 명세를 확인합니다.
+2. 오류나 빠진 정보를 이 저장소의 Issue로 제보하거나, 작은 수정은 Pull Request로
+   보냅니다.
+3. PR에 변경 이유, 근거가 되는 공개 소스, 확인한 링크를 적습니다.
+4. 파일 형식이나 API 계약에 영향을 주는 변경은 해당 저장소의 테스트 결과도
+   적습니다.
 
-## Contribution Process
+운영 상태를 확인하지 못한 기능을 이미 배포된 기능으로 쓰지 마세요. 비공개 서비스
+설정, 계정 정보, 토큰, 실제 사용자 데이터는 문서나 예제에 넣지 마세요.
 
-1. **Fork** the repository you want to contribute to.
-2. Create a **feature branch** from `main`: `git checkout -b feature/my-feature`
-3. Make your changes with clear commit messages.
-4. Push your branch and open a **Pull Request**.
-5. Wait for review. All PRs require at least one review before merging.
+## 라이선스와 연락처
 
-## Contributor License Agreement (CLA)
+[이 저장소의 라이선스](LICENSE.md)에는 기여자 라이선스 계약(CLA) 요구가 적혀
+있습니다. 자동 서명 봇이나 절차가 준비되어 있다고 가정하지 말고, 필요한 절차는
+PR에서 유지보수자에게 확인해 주세요. 조직 공통 절차는
+[기여 안내](https://github.com/zukuapp/.github/blob/main/CONTRIBUTING.md)를
+참고하세요.
 
-All contributors must sign a Contributor License Agreement (CLA) before their contributions can be merged. The CLA bot will guide you through this process when you open your first PR.
-
-## Development Guidelines
-
-- Follow the existing code style and conventions.
-- Write tests for new features and bug fixes.
-- Update documentation when changing APIs or behavior.
-- Keep commits focused and atomic.
-- Write clear commit messages in the present tense.
-
-## Pull Request Guidelines
-
-- Reference related issues in your PR description.
-- Keep PRs focused on a single change.
-- Ensure CI passes before requesting review.
-- Respond to review feedback promptly.
-
-## Code Style
-
-- **Documentation**: Markdown, follow existing formatting.
-- **Code**: Follow the conventions of each repository.
-
-## Questions?
-
-- For general questions, open a discussion on the relevant repository.
-- For security issues, email security@zuzunza.com.
-- For licensing questions, email licensing@zuzunza.com.
-
-Thank you for contributing!
+취약점은 공개 Issue로 올리지 말고
+[보안 정책](https://github.com/zukuapp/.github/blob/main/SECURITY.md)에 따라
+비공개로 신고해 주세요. 일반 사용 문의는
+[지원 안내](https://github.com/zukuapp/.github/blob/main/SUPPORT.md)를
+이용하세요.
