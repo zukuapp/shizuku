@@ -1,66 +1,58 @@
-# shizuku
+<!-- markdownlint-disable MD033 MD041 -->
+<a href="https://zukuapp.github.io/docs/">
+  <img
+    src="https://raw.githubusercontent.com/zukuapp/.github/main/profile/assets/developer-hero.png"
+    alt="Trecillo 로고와 ZUKU 개발자 허브 안내"
+    width="760"
+  >
+</a>
+<!-- markdownlint-enable MD033 MD041 -->
 
-ZUKU(즈쿠) 플랫폼의 **공개 홈·문서 인덱스** 저장소입니다.  
-브랜드명 Shizuku · 약칭 **zuku (즈쿠)** · 도메인 [zuzunza.com](https://zuzunza.com).
+# ZUKU 공개 개발 개요
 
-> GitHub 조직: [zukuapp](https://github.com/zukuapp) · 설계도 SSOT: [`zuku-docs`](https://github.com/zukuapp/zuku-docs)
+**ZUKU(즈쿠)**는 Trecillo(트레실로)가 만드는 창작·미디어 플랫폼입니다. 이
+저장소는 공개 개발 문서의 길잡이입니다. 실제 파일 형식과 API 필드는 각 저장소의
+명세에서 확인하세요.
 
-## 미디어 · 제품
+| 찾는 내용            | 시작할 곳                                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 개발 문서 전체       | [ZUKU 개발자 문서](https://github.com/zukuapp/.github/blob/main/docs/README.md)                                                                        |
+| HTML5 게임 패키징    | [`zwf` 5분 입문](https://github.com/zukuapp/.github/blob/main/docs/getting-started.md) · [ZWF2 명세](https://github.com/zukuapp/zwf/blob/main/SPEC.md) |
+| Jump 게임 메타데이터 | [`zuku-engine-next2d` 매니페스트 스키마](https://github.com/zukuapp/zuku-engine-next2d/blob/main/schemas/jump-manifest.schema.json)                    |
+| 공개 API 모델        | [`zuku-api` OpenAPI 3.1 명세](https://github.com/zukuapp/zuku-api/blob/main/spec/zuku-api-v1.yaml)                                                     |
+| ZUKBOX 바이너리      | [`zukbox-runtime` 형식 명세 초안](https://github.com/zukuapp/zukbox-runtime/blob/main/docs/zwf-format-v0.md)                                           |
 
-| | 포맷 | 설명 |
-|---|------|------|
-| **Thread** | SNS/포럼 | `www` 홈 · 미디어는 ≤30초 미리보기 + 딥링크 |
-| **Hype** | 롱폼 · 가로 영상 · 사진 | 창작 커뮤니티 |
-| **Swipe** | 세로 숏폼 | 스튜디오 없음 · Swipe→Hype 배급 금지 |
-| **Jump** | WASM/HTML5 | 게임 허브 + Jump Studio |
-| **Aist** | 생성 전용 | → Jump Studio draft |
+## 이 저장소의 문서
 
-## 스택
+| 문서                                            | 내용                                     |
+| ----------------------------------------------- | ---------------------------------------- |
+| [문서 목차](docs/README.md)                     | 이 저장소 문서의 범위와 읽는 순서        |
+| [플랫폼 개요](docs/00-overview.md)              | 공개 제품과 개발 경로                    |
+| [공개 아키텍처](docs/01-architecture.md)        | ZWF2, ZUKBOX ZWF1, API 계약의 경계       |
+| [공개 작업 방식](docs/02-project-management.md) | 변경 제안과 명세 갱신                    |
+| [데이터 모델](docs/05-database.md)              | 공개 API 모델과 비공개 저장 계층의 구분  |
+| [API 안내](docs/06-api.md)                      | OpenAPI 명세를 읽는 방법                 |
+| [브랜드 안내](docs/07-frontend-design.md)       | 현행 Trecillo 로고와 ZUKU 색상           |
+| [배포·운영 문서의 범위](docs/08-deployment.md)  | 공개 저장소에서 확인할 수 있는 검증 경로 |
 
-Next.js · WebAssembly · Rust · PostgreSQL · Redis · nginx · Cloudflare
+## 형식과 도구의 상태
 
-## 아키텍처 (요약)
+`zwf`는 HTML5 ZIP을 **ZWF2**로 컴파일하고 검사하는 공개 도구입니다. ZUKBOX의
+**ZWF1**은 같은 `.zwf` 확장자를 쓰지만 별도 바이너리 형식입니다. 두 형식을
+교차해서 읽을 수 있다고 가정하지 마세요.
 
-```
-Client (Browser / Mobile)
-    │
-Cloudflare (WAF · CDN)
-    │
-nginx
-    │
-Next.js SSR  ·  Rust 백엔드  ·  WASM 런타임(샌드박스 경계)
-    │
-PostgreSQL · Redis · R2
-```
+`zuku-cli`의 `create`, `validate`, `package`, `upload` 명령은 현재 구현에서 안내
+메시지만 출력하는 초기 형태입니다. 패키지 제작을 시작할 때는 위 `zwf` 입문을
+사용하세요. 공개 API 명세는 경로와 모델의 계약이며 서비스 계정, 운영 상태, API
+접근 권한을 보증하지 않습니다.
 
-인터랙티브 콘텐츠는 **unprivileged 샌드박스 경계**와 계약된 리소스 한도 안에서 실행됩니다.  
-핵심 내부 구현은 공개하지 않습니다.
+## 이름과 기여
 
-## 문서
+사용자에게 표시하는 이름은 **ZUKU(즈쿠)**, 회사명은
+**Trecillo(트레실로)**입니다. `Shizuku`는 이 저장소에 남아 있는 이전
+프로젝트명입니다. 현행 로고와 표기법은
+[브랜드 문서](docs/07-frontend-design.md)를 따릅니다.
 
-| 경로 | 내용 |
-|------|------|
-| `docs/` | 공개용 설계·가이드 인덱스 |
-| [`zuku-docs`](https://github.com/zukuapp/zuku-docs) | 전체 설계도 (SSOT) |
-
-## 공개 Jump 도구
-
-| 저장소 | 역할 |
-|--------|------|
-| [zuku-engine-next2d](https://github.com/zukuapp/zuku-engine-next2d) | Jump 엔진·매니페스트 |
-| [zuku-cli](https://github.com/zukuapp/zuku-cli) | 검증·패키징 CLI |
-| [zuku-api](https://github.com/zukuapp/zuku-api) | OpenAPI 계약 |
-
-## 네이밍
-
-| 표기 | 용도 |
-|------|------|
-| Shizuku | 브랜드·엔진 코드명 |
-| **zuku / 즈쿠** | 공식 약칭 |
-| Tresillo | 회사 |
-
-> “시즈쿠” 표기는 사용하지 않습니다.
-
----
-
-**ZUKU (즈쿠)** · Tresillo · [zuzunza.com](https://zuzunza.com)
+문서 수정은 [기여 안내](CONTRIBUTING.md)를 참고하세요. 취약점은 공개 Issue 대신
+[보안 정책](https://github.com/zukuapp/.github/blob/main/SECURITY.md)에 따라
+비공개로 제보해 주세요.
