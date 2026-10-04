@@ -1,6 +1,6 @@
 # ZUKU 공개 플랫폼 개요
 
-ZUKU(즈쿠)는 Trecillo가 만드는 창작·미디어 플랫폼입니다. 공개 웹사이트는
+ZUKU는 Trecillo가 만드는 창작·미디어 플랫폼입니다. 공개 웹사이트는
 [ZUKU 제품 지도](https://zukuapp.github.io/platform/)에서 Thread, Hype, Swipe,
 Jump 등의 화면을 소개합니다. 이 문서는 제품 소개와 개발 계약을 구분해
 안내합니다.
@@ -22,8 +22,9 @@ ZWF2와 ZUKBOX ZWF1은 확장자 `.zwf`를 공유하지만 파일 구조가 다�
 [`zwf` 입문](https://github.com/zukuapp/.github/blob/main/docs/getting-started.md)은
 로컬에서 직접 재현할 수 있는 패키징 절차입니다. 반면 OpenAPI 문서의 서버 주소와
 데이터 모델만으로 외부 계정·토큰 발급이나 운영 API 접근을 보장할 수 없습니다.
-`zuku-cli` 명령은 아직 실제 프로젝트 생성·검증·업로드를 수행하지 않는 초기
-구현입니다.
+[`zukujs-cli`](https://github.com/zukuapp/zukujs-cli)는 두 명령 별칭과
+단일 Agent Core를 제공하며 생성·검증·패키징·업로드 소스를 포함합니다.
+실제 서비스 호출·공개 게시·GUI 지원 상태는 별도 검증과 릴리스를 확인합니다.
 
 ## 문서의 기준
 

@@ -1,16 +1,22 @@
+<!-- BEGIN ZUKU OFFICIAL BRAND -->
 <!-- markdownlint-disable MD033 MD041 -->
-<a href="https://zukuapp.github.io/docs/">
-  <img
-    src="https://raw.githubusercontent.com/zukuapp/.github/main/profile/assets/developer-hero.png"
-    alt="Trecillo 로고와 ZUKU 개발자 허브 안내"
-    width="760"
-  >
-</a>
+<p align="center">
+  <a href="https://docs.zuzunza.com/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)"
+        srcset="docs/branding/zuku-logo-dark.png">
+      <img src="docs/branding/zuku-logo-light.png"
+        alt="ZUKU" width="320">
+    </picture>
+  </a>
+</p>
+<p align="center">ZUKU - 내가 불러 일으키는 새로운 창작.</p>
 <!-- markdownlint-enable MD033 MD041 -->
+<!-- END ZUKU OFFICIAL BRAND -->
 
 # ZUKU 공개 개발 개요
 
-**ZUKU(즈쿠)**는 Trecillo(트레실로)가 만드는 창작·미디어 플랫폼입니다. 이
+**ZUKU**는 Trecillo(트레실로)가 만드는 창작·미디어 플랫폼입니다. 이
 저장소는 공개 개발 문서의 길잡이입니다. 실제 파일 형식과 API 필드는 각 저장소의
 명세에서 확인하세요.
 
@@ -41,14 +47,14 @@
 **ZWF1**은 같은 `.zwf` 확장자를 쓰지만 별도 바이너리 형식입니다. 두 형식을
 교차해서 읽을 수 있다고 가정하지 마세요.
 
-`zuku-cli`의 `create`, `validate`, `package`, `upload` 명령은 현재 구현에서 안내
-메시지만 출력하는 초기 형태입니다. 패키지 제작을 시작할 때는 위 `zwf` 입문을
-사용하세요. 공개 API 명세는 경로와 모델의 계약이며 서비스 계정, 운영 상태, API
+[`zukujs-cli`](https://github.com/zukuapp/zukujs-cli)의 `zuku`와 `zukujs`는
+같은 진입점·Agent Core·설정·인증을 사용하는 두 별칭입니다. 생성·검증·패키징·
+업로드 소스와 릴리스별 검증 상태는 해당 저장소의 문서를 확인하세요. 공개 API 명세는 경로와 모델의 계약이며 서비스 계정, 운영 상태, API
 접근 권한을 보증하지 않습니다.
 
 ## 이름과 기여
 
-사용자에게 표시하는 이름은 **ZUKU(즈쿠)**, 회사명은
+사용자에게 표시하는 이름은 **ZUKU**, 회사명은
 **Trecillo(트레실로)**입니다. `Shizuku`는 이 저장소에 남아 있는 이전
 프로젝트명입니다. 현행 로고와 표기법은
 [브랜드 문서](docs/07-frontend-design.md)를 따릅니다.
