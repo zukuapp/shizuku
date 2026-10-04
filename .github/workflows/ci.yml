@@ -23,7 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check GitHub links against authenticated repository metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/check_github_links.py
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           use-quiet-mode: yes
           use-verbose-mode: yes
+          config-file: .markdown-link-check.json
