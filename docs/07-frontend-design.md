@@ -19,4 +19,4 @@ README의 본문은 GitHub 글꼴을 사용하고 제목·링크·설명은 텍�
 색상 토큰을 바꾸더라도 승인된 로고 원본을 다시 칠하지 않습니다.
 
 GitHub supplies README body fonts. Keep headings, links, and descriptions
-as text. Product colors do not authorize recoloring the approved logo.
+as text. Do not recolor the approved logo to match product colors.
